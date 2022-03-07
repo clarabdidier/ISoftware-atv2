@@ -21,14 +21,14 @@ int main() {
     int pid = fork();
 
      
-    if (pid == 0) { 
+    if (pid > 0) { 
         for (int i = 0; i < QTD_MESSAGES; i++) {
             printf("Writing Message %d is %s\n", i, writeMessages[i]);
-            write(pipeFileDescriptors[1], writeMessages[0], sizeof(char) * 20);
+            write(pipeFileDescriptors[1], writeMessages[i], sizeof(char) * 20);
         }
     }
 
-    else if (pid > 0){
+    else if (pid == 0){
         for (int i = 0; i < QTD_MESSAGES; i++) {
             read(pipeFileDescriptors[0], readMessages, sizeof(char) * 20);
             printf("Reading Message %d is %s\n", i, readMessages);
