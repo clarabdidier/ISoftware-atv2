@@ -1,1 +1,11 @@
-# ISoftware-atv2
+## Running
+
+```bash
+make
+make run
+```
+## Cleaning
+
+```bash
+make clean
+```
